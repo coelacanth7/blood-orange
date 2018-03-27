@@ -1,29 +1,27 @@
 import React, { Component } from "react";
+import axios from "axios";
 import App from "../components/App";
 
 class AppContainer extends Component {
 	constructor() {
 		super();
 		this.state = {
-			Fprint: {},
+			Fprint: "",
 			isFetching: false,
 			error: null
 		};
 	}
 
 	componentDidMount() {
-		fetch("/")
+		axios("/")
 			.then(response => {
-				if (response.status >= 400) {
-					throw new Error("Bad response from server");
-				}
-				return response;
+				console.log(response);
 			})
-			.then(json => {
-				console.log(JSON.stringify(json, 0, 2));
-				console.log(json);
-				this.setState({ Fprint: json });
-			})
+			// .then(json => {
+			// 	// console.log(JSON.stringify(json, 0, 2));
+			// 	console.log(json.body);
+			// 	this.setState({ Fprint: json });
+			// })
 			.catch(err => {
 				console.error(err);
 			});

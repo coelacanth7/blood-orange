@@ -2,8 +2,8 @@ var express = require("express");
 var router = express.Router();
 
 router.get("/", (req, res) => {
-	console.log(JSON.stringify(req, 0, 2));
-	res.json(req);
+	console.log(req.socket.remoteAddress);
+	res.send("suk a dik");
 });
 
 // componentDidMount() {

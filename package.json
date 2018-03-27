@@ -1,26 +1,32 @@
 {
-  "name": "blood-orange",
-  "version": "1.0.0",
-  "description": "location based anonymous messaging",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/coelacanth7/blood-orange.git"
-  },
-  "author": "Gregory Alford coelacanth7",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/coelacanth7/blood-orange/issues"
-  },
-  "homepage": "https://github.com/coelacanth7/blood-orange#readme",
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.3",
-    "mongoose": "^5.0.11",
-    "morgan": "^1.9.0",
-    "morgan-toolkit": "^1.2.2"
-  }
+	"name": "blood-orange",
+	"version": "1.0.0",
+	"description": "location based anonymous messaging",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js",
+		"heroku-postbuild":
+			"cd client && npm install --only=dev && npm install && npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/coelacanth7/blood-orange.git"
+	},
+	"author": "Gregory Alford coelacanth7",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/coelacanth7/blood-orange/issues"
+	},
+	"homepage": "https://github.com/coelacanth7/blood-orange#readme",
+	"dependencies": {
+		"body-parser": "^1.18.2",
+		"express": "^4.16.3",
+		"mongoose": "^5.0.11",
+		"morgan": "^1.9.0",
+		"morgan-toolkit": "^1.2.2"
+	},
+	"engines": {
+		"node": "9.9.0"
+	}
 }

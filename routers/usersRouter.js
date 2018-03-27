@@ -1,11 +1,19 @@
 const express = require("express");
 const axios = require("axios");
+var requestIp = require("request-ip");
 
 const router = express.Router();
 
 router.get("/api", (req, res) => {
-	console.log(req.socket.remoteAddress);
-	res.send("fuck you");
+	console.log(req.headers);
+	// var ip =
+	// 	req.headers["x-forwarded-for"].split(",").pop() ||
+	// 	req.connection.remoteAddress ||
+	// 	req.socket.remoteAddress ||
+	// 	req.connection.socket.remoteAddress;
+	const ip = requestIp.getClientIp(req);
+	console.log(ip);
+	res.send(`fuck you ${ip}`);
 	// const ip = "72.200.79.101";
 	// axios
 	// 	.get(`freegeoip.net/json/${ip}`)

@@ -5,23 +5,14 @@ import App from "../components/App";
 class AppContainer extends Component {
 	constructor() {
 		super();
-		this.state = {
-			Fprint: "",
-			isFetching: false,
-			error: null
-		};
+		this.state = { Fprint: "", isFetching: false, error: null };
 	}
 
 	componentDidMount() {
 		axios
 			.get("/api")
-			.then(response => {
-				console.log(response.data);
-				this.setState({ Fprint: response.data });
-			})
-			.catch(err => {
-				console.error(err);
-			});
+			.then(response => this.setState({ Fprint: response.data }))
+			.catch(err => console.error(err));
 	}
 
 	render() {

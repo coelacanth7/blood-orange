@@ -1,16 +1,26 @@
 {
   "name": "blood-orange",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1"
-  },
+  "version": "1.0.0",
+  "description": "location based anonymous messaging",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coelacanth7/blood-orange.git"
+  },
+  "author": "Gregory Alford coelacanth7",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coelacanth7/blood-orange/issues"
+  },
+  "homepage": "https://github.com/coelacanth7/blood-orange#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.11",
+    "morgan": "^1.9.0",
+    "morgan-toolkit": "^1.2.2"
   }
 }

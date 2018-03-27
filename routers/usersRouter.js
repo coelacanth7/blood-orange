@@ -1,9 +1,19 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const axios = require("axios");
 
-router.get("/", (req, res) => {
+const router = express.Router();
+
+router.get("/api", (req, res) => {
 	console.log(req.socket.remoteAddress);
-	res.send("suk a dik");
+	res.send("fuck you");
+	// const ip = "72.200.79.101";
+	// axios
+	// 	.get(`freegeoip.net/json/${ip}`)
+	// 	.then(json => {
+	// 		console.log(json);
+	// 		res.send("suk a dik");
+	// 	})
+	// 	.catch(err => console.error(err));
 });
 
 // componentDidMount() {

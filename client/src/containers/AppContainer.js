@@ -13,15 +13,12 @@ class AppContainer extends Component {
 	}
 
 	componentDidMount() {
-		axios("/")
+		axios
+			.get("/api")
 			.then(response => {
-				console.log(response);
+				console.log(response.data);
+				this.setState({ Fprint: response.data });
 			})
-			// .then(json => {
-			// 	// console.log(JSON.stringify(json, 0, 2));
-			// 	console.log(json.body);
-			// 	this.setState({ Fprint: json });
-			// })
 			.catch(err => {
 				console.error(err);
 			});

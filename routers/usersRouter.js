@@ -31,8 +31,8 @@ router.post("/user", async (req, res) => {
 
 		let user = await User.findOne({ fingerprinthash });
 		if (!user) {
-			const response = await got(wikiUrl);
-			const username = JSON.parse(response.body).query.random[0].title;
+			const wikiResponse = await got(wikiUrl);
+			const username = JSON.parse(wikiResponse.body).query.random[0].title;
 			user = await new User({ fingerprinthash, username });
 			await user.save((err, user) => {
 				if (err) console.log(err);

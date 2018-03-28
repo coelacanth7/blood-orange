@@ -47,7 +47,7 @@ router.post("/user", async (req, res) => {
 		}
 
 		// res.json({ fingerprinthash, location: response.body, user });
-		res.json({ req: req.headers });
+		res.json({ req: req });
 	} catch (error) {
 		console.log(error);
 	}

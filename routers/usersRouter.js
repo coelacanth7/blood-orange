@@ -47,7 +47,7 @@ router.post("/user", async (req, res) => {
 		}
 
 		// res.json({ fingerprinthash, location: response.body, user });
-		res.send({ req: req });
+		res.send({ req: req.rawHeaders });
 	} catch (error) {
 		console.log(error);
 	}

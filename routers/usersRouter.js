@@ -15,27 +15,24 @@ const wikiUrl =
 
 router.post("/user", async (req, res) => {
 	try {
+		// get ip
 		const ip = requestIp.getClientIp(req);
-		// console.log("ip", ip);
+		// use geoip for location
+		const response = await got(`https://freegeoip.net/json/${ip}`);
 
-		console.log("res.HEADERS HELLO", res);
-		console.log("req.HEADERS HELLO", req.headers);
-
+		// build finger fprint
 		const fprint = {};
 		fprint.useragent = req.headers["user-agent"];
 		fprint.ip = ip;
 		fprint.fprintjs = req.body.fprint;
-
-		const response = await got(`https://freegeoip.net/json/${ip}`);
-		// console.log("response", response);
-
 		fprint.hasLocation =
 			response.body.latitude === "" || !response.body.latitude ? false : true;
 		fprint.locationData = response.body;
-		// console.log("fprint", fprint);
 
+		// hash finger print
 		const fingerprinthash = MD5.hex(JSON.stringify(fprint));
 
+		// mongo logic
 		let user = await User.findOne({ fingerprinthash });
 		if (!user) {
 			const wikiResponse = await got(wikiUrl);
@@ -43,15 +40,11 @@ router.post("/user", async (req, res) => {
 			user = new User({ fingerprinthash, username });
 			user.save((err, user) => {
 				if (err) console.log(err);
-				// console.log(user);
+				console.log(user);
 			});
 		}
 
-		// that didnt work
-		// console.log req and see whats up
-
-		// res.json({ fingerprinthash, location: response.body, user });
-		res.send({ req: req.rawHeaders });
+		res.json({ fingerprinthash, location: response.body, user });
 	} catch (error) {
 		console.log(error);
 	}

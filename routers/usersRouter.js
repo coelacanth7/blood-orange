@@ -16,6 +16,7 @@ const wikiUrl =
 router.post("/user", async (req, res) => {
 	try {
 		const ip = requestIp.getClientIp(req);
+		console.log(ip);
 		const fprint = req.headers;
 		fprint.ip = ip;
 		fprint.fprintjs = req.body.fprint;

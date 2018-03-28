@@ -18,7 +18,7 @@ router.post("/user", async (req, res) => {
 		const ip = requestIp.getClientIp(req);
 		// console.log("ip", ip);
 
-		// console.log("req.headers.rawHeaders", req.headers.rawHeaders);
+		console.log("REQ.HEADERS", req.headers);
 
 		const fprint = {};
 		fprint.useragent = req.headers["user-agent"];
@@ -45,6 +45,9 @@ router.post("/user", async (req, res) => {
 				// console.log(user);
 			});
 		}
+
+		// that didnt work
+		// console.log req and see whats up
 
 		// res.json({ fingerprinthash, location: response.body, user });
 		res.send({ req: req.rawHeaders });

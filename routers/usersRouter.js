@@ -33,8 +33,8 @@ router.post("/user", async (req, res) => {
 		if (!user) {
 			const wikiResponse = await got(wikiUrl);
 			const username = JSON.parse(wikiResponse.body).query.random[0].title;
-			user = await new User({ fingerprinthash, username });
-			await user.save((err, user) => {
+			user = new User({ fingerprinthash, username });
+			user.save((err, user) => {
 				if (err) console.log(err);
 				console.log(user);
 			});

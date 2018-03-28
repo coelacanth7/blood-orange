@@ -14,12 +14,8 @@ class AppContainer extends Component {
 		const fprint = new fingerprintjs({ canvas: true }).get();
 		console.log(fprint);
 		axios
-			.post("/api", { fprint })
-			.then(response =>
-				this.setState({ Fprint: response.data }, () => {
-					axios.post("/check", { fprint: this.state.Fprint });
-				})
-			)
+			.post("/user", { fprint })
+			.then(response => this.setState({ Fprint: response.data }))
 			.catch(err => console.error(err));
 	}
 

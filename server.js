@@ -14,7 +14,6 @@ app.use(bodyParser.json());
 // get POST
 const methodOverride = require("method-override");
 const getPostSupport = require("express-method-override-get-post-support");
-
 app.use(
 	methodOverride(
 		getPostSupport.callback,
@@ -44,7 +43,15 @@ const morgan = require("morgan");
 const morganToolkit = require("morgan-toolkit")(morgan);
 app.use(morganToolkit());
 
-// const mongoose = require("mongoose");
+// Mongoose
+const mongoose = require("mongoose");
+app.use((req, res, next) => {
+	if (mongoose.connection.readyState) {
+		next();
+	} else {
+		require("./mongoose/mongo")().then(() => next());
+	}
+});
 
 // Routes
 const usersRouter = require("./routers/usersRouter");
@@ -53,10 +60,8 @@ app.use("/", usersRouter);
 // listen
 var port = process.env.PORT || process.argv[2] || 3001;
 var host = "localhost";
-
 var args;
 process.env.NODE_ENV === "production" ? (args = [port]) : (args = [port, host]);
-
 args.push(() => {
 	console.log(`Listening: http://${host}:${port}`);
 });

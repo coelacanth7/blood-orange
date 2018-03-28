@@ -1,0 +1,13 @@
+{
+	"development": {
+		"database": "blood_orange_development",
+		"host": "localhost"
+	},
+	"test": {
+		"database": "blood_orange_test",
+		"host": "localhost"
+	},
+	"production": {
+		"use_env_variable": "MONGOLAB_BRONZE_URI"
+	}
+}

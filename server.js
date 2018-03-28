@@ -11,6 +11,17 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// get POST
+const methodOverride = require("method-override");
+const getPostSupport = require("express-method-override-get-post-support");
+
+app.use(
+	methodOverride(
+		getPostSupport.callback,
+		getPostSupport.options // { methods: ['POST', 'GET'] }
+	)
+);
+
 // cors
 app.use(function(req, res, next) {
 	res.setHeader("Access-Control-Allow-Origin", "*");

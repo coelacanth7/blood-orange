@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import fingerprintjs from "fingerprintjs";
+
 import App from "../components/App";
 
 class AppContainer extends Component {
@@ -9,9 +11,15 @@ class AppContainer extends Component {
 	}
 
 	componentDidMount() {
+		const fprint = new fingerprintjs({ canvas: true }).get();
+		console.log(fprint);
 		axios
-			.get("/api")
-			.then(response => this.setState({ Fprint: response.data }))
+			.post("/api", { fprint })
+			.then(response =>
+				this.setState({ Fprint: response.data }, () => {
+					axios.post("/check", { fprint: this.state.Fprint });
+				})
+			)
 			.catch(err => console.error(err));
 	}
 

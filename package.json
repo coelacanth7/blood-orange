@@ -6,8 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node server.js",
-		"heroku-postbuild":
-			"cd client && npm install --only=dev && npm install && npm run build"
+		"heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
 	},
 	"repository": {
 		"type": "git",
@@ -24,6 +23,7 @@
 		"body-parser": "^1.18.2",
 		"express": "^4.16.3",
 		"express-method-override-get-post-support": "^1.0.1",
+		"got": "^8.3.0",
 		"jshashes": "^1.0.7",
 		"method-override": "^2.3.10",
 		"mongoose": "^5.0.11",

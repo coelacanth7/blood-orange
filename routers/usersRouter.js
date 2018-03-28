@@ -1,29 +1,41 @@
 const express = require("express");
-const request = require("request");
+const got = require("got");
 const requestIp = require("request-ip");
 const Hashes = require("jshashes");
-var MD5 = new Hashes.MD5();
 
+var MD5 = new Hashes.MD5();
 const router = express.Router();
 
-var fprint;
+router.post("/user", async (req, res) => {
+	try {
+		const ip = requestIp.getClientIp(req);
+		const fprint = req.headers;
+		fprint.ip = ip;
+		fprint.fprintjs = req.body.fprint;
 
-router.post("/user", (req, res) => {
-	const ip = requestIp.getClientIp(req);
-	fprint = req.headers;
-	fprint.ip = ip;
-	fprint.fprintjs = req.body.fprint;
+		const response = await got(`https://freegeoip.net/json/${ip}`);
 
-	request(`https://freegeoip.net/json/${ip}`, function(error, response, body) {
-		console.log("error:", error);
-		console.log("statusCode:", response && response.statusCode);
-
-		fprint.hasLocation = body.latitude === "" || !body.latitude ? false : true;
-		fprint.locationData = body;
+		fprint.hasLocation =
+			response.body.latitude === "" || !response.body.latitude ? false : true;
+		fprint.locationData = response.body;
 
 		const hash = MD5.hex(JSON.stringify(fprint));
-		res.json(hash);
-	});
+
+		res.json({ hash: hash, location: response.body });
+	} catch (error) {
+		console.log(error);
+	}
+	// request(`https://freegeoip.net/json/${ip}`, function(error, response, body) {
+	// 	console.log("error:", error);
+	// 	console.log("statusCode:", response && response.statusCode);
+	//
+	// 	fprint.hasLocation = body.latitude === "" || !body.latitude ? false : true;
+	// 	fprint.locationData = body;
+	//
+	// 	const hash = MD5.hex(JSON.stringify(fprint));
+	//
+	// 	res.json({ hash: hash, location: body });
+	// });
 });
 
 module.exports = router;

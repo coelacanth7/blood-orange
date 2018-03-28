@@ -17,15 +17,17 @@ router.post("/user", async (req, res) => {
 	try {
 		const ip = requestIp.getClientIp(req);
 		console.log(ip);
+		console.log(req.headers);
 		const fprint = req.headers;
 		fprint.ip = ip;
 		fprint.fprintjs = req.body.fprint;
 
 		const response = await got(`https://freegeoip.net/json/${ip}`);
+		console.log(response);
 
-		// fprint.hasLocation =
-		// 	response.body.latitude === "" || !response.body.latitude ? false : true;
-		// fprint.locationData = response.body;
+		fprint.hasLocation =
+			response.body.latitude === "" || !response.body.latitude ? false : true;
+		fprint.locationData = response.body;
 
 		const fingerprinthash = MD5.hex(JSON.stringify(fprint));
 

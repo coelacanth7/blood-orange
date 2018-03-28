@@ -2,6 +2,17 @@
 const express = require("express");
 const app = express();
 app.enable("trust proxy");
+app.use(
+	express.session({
+		secret: "somesecret",
+		key: "sid",
+		proxy: true,
+		cookie: {
+			secure: true,
+			maxAge: 5184000000
+		}
+	})
+);
 
 // path
 const path = require("path");

@@ -1,6 +1,7 @@
 // express
 const express = require("express");
 const app = express();
+app.enable("trust proxy");
 
 // path
 const path = require("path");

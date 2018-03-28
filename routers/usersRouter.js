@@ -17,10 +17,7 @@ router.post("/user", async (req, res) => {
 	try {
 		const ip = requestIp.getClientIp(req);
 		console.log("ip", ip);
-		console.log(
-			"req.headers.PassThrough.rawHeaders",
-			req.headers.PassThrough.rawHeaders
-		);
+
 		console.log("req.headers.rawHeaders", req.headers.rawHeaders);
 
 		const fprint = {};

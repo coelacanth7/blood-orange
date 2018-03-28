@@ -18,7 +18,7 @@ router.post("/user", async (req, res) => {
 		const ip = requestIp.getClientIp(req);
 		// console.log("ip", ip);
 
-		console.log("REQ.HEADERS", req.headers);
+		console.log("REQ.HEADERS HELLO", req);
 
 		const fprint = {};
 		fprint.useragent = req.headers["user-agent"];

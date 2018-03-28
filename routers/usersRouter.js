@@ -23,9 +23,9 @@ router.post("/user", async (req, res) => {
 
 		const response = await got(`https://freegeoip.net/json/${ip}`);
 
-		fprint.hasLocation =
-			response.body.latitude === "" || !response.body.latitude ? false : true;
-		fprint.locationData = response.body;
+		// fprint.hasLocation =
+		// 	response.body.latitude === "" || !response.body.latitude ? false : true;
+		// fprint.locationData = response.body;
 
 		const fingerprinthash = MD5.hex(JSON.stringify(fprint));
 

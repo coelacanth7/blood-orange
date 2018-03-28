@@ -23,6 +23,7 @@
 		"body-parser": "^1.18.2",
 		"express": "^4.16.3",
 		"express-method-override-get-post-support": "^1.0.1",
+		"fingerprintjs2": "^1.6.1",
 		"got": "^8.3.0",
 		"jshashes": "^1.0.7",
 		"method-override": "^2.3.10",

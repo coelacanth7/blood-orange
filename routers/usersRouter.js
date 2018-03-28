@@ -16,18 +16,25 @@ const wikiUrl =
 router.post("/user", async (req, res) => {
 	try {
 		const ip = requestIp.getClientIp(req);
-		console.log(ip);
-		console.log(req.headers);
-		const fprint = req.headers;
+		console.log("ip", ip);
+		console.log(
+			"req.headers.PassThrough.rawHeaders",
+			req.headers.PassThrough.rawHeaders
+		);
+		console.log("req.headers.rawHeaders", req.headers.rawHeaders);
+
+		const fprint = {};
+		fprint.useragent = req.headers["user-agent"];
 		fprint.ip = ip;
 		fprint.fprintjs = req.body.fprint;
 
 		const response = await got(`https://freegeoip.net/json/${ip}`);
-		console.log(response);
+		console.log("response", response);
 
 		fprint.hasLocation =
 			response.body.latitude === "" || !response.body.latitude ? false : true;
 		fprint.locationData = response.body;
+		console.log("fprint", fprint);
 
 		const fingerprinthash = MD5.hex(JSON.stringify(fprint));
 

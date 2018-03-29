@@ -20,6 +20,11 @@ router.post("/user", async (req, res) => {
 		// use geoip for location
 		const response = await got(`https://freegeoip.net/json/${ip}`);
 
+		// cookies
+		console.log("cookies", req.signedCookies);
+		console.log("cookies", req.cookies);
+		console.log("cookies", req.Cookie);
+
 		// build a little better finger fprint
 		const fprint = {};
 		fprint.useragent = req.headers["user-agent"];

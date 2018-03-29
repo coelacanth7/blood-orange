@@ -21,6 +21,7 @@
 	"dependencies": {
 		"bluebird": "^3.5.1",
 		"body-parser": "^1.18.2",
+		"cookie-parser": "^1.4.3",
 		"express": "^4.16.3",
 		"express-method-override-get-post-support": "^1.0.1",
 		"fingerprintjs2": "^1.6.1",

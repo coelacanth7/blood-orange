@@ -6,6 +6,10 @@ const app = express();
 const path = require("path");
 app.use(express.static(path.join(__dirname, "client/build")));
 
+// cookie parser
+var cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
 // body parser
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));

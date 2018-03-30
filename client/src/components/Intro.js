@@ -5,9 +5,11 @@ const Intro = ({ displayIntro, onClickGoButton }) => {
 
 	return (
 		<div>
-			<h1 className="intro-text">Location based anonymous messaging</h1>
-			<h4>Get a temporary username and shitpost away</h4>
-			<button onClick={onClickGoButton}>Have a go</button>
+			<h1 id="intro-text">Location based anonymous shitposting</h1>
+			<h4 id="description-text">Get a temporary username and shitpost away</h4>
+			<div id="have-a-go" onClick={onClickGoButton}>
+				have a go
+			</div>
 		</div>
 	);
 };

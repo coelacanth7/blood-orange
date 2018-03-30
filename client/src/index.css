@@ -1,5 +1,191 @@
+/* Reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+	line-height: 1;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+/* style */
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Merriweather", serif;
+	background: #bf203ae6;
+	text-align: center;
+}
+
+header {
+	margin: 20px;
+	text-align: center;
+	color: white;
+	fill: currentColor;
+}
+
+.App-header h1 {
+	font-size: 36px;
+}
+
+#intro-text {
+	margin-top: 10px;
+	font-style: italic;
+	font-size: 46px;
+	color: white;
+	text-align: center;
+	max-width: 400px;
+	margin: 60px auto 20px;
+}
+
+#description-text {
+	margin-top: 10px;
+	font-style: italic;
+	font-size: 26px;
+	color: white;
+	text-align: center;
+	max-width: 400px;
+	margin: 60px auto 20px;
+}
+
+/* button */
+#have-a-go {
+	margin: 0 auto;
+	margin-top: 20%;
+	max-width: 52%;
+	-o-transition: 0.5s;
+	-ms-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+	color: white;
+	font-size: 42px;
+}
+#have-a-go:hover {
+	color: blue;
 }

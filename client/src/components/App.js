@@ -9,7 +9,7 @@ class App extends Component {
 		super(props);
 		this.state = {
 			displayIntro: true,
-			Fprint: "",
+			Fprint: {},
 			isFetching: false,
 			error: null
 		};
@@ -41,7 +41,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<header className="App-header">
-					<h1 id="list">hey</h1>
+					<h1 id="list">bood orange</h1>
 				</header>
 				<Intro {...this.state} onClickGoButton={this.onClickGoButton} />
 				<pre>{list}</pre>

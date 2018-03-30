@@ -13,8 +13,9 @@ class AppContainer extends Component {
 	componentDidMount() {
 		new fingerprintjs().get((fprint, components) => {
 			console.log(fprint);
-			// console.log(components);
 			console.log(document.cookie);
+			console.log(window.sessionStorage);
+			console.log(window.localStorage);
 
 			axios
 				.post("/user", { fprint })

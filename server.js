@@ -15,6 +15,15 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// ip middleware
+const requestIp = require("request-ip");
+const ipMiddleware = function(req, res, next) {
+	const ip = requestIp.getClientIp(req);
+	res.locals.ip = ip;
+	next();
+};
+app.use(ipMiddleware);
+
 // get POST
 const methodOverride = require("method-override");
 const getPostSupport = require("express-method-override-get-post-support");

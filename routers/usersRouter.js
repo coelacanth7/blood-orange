@@ -16,7 +16,8 @@ const wikiUrl =
 router.post("/user", async (req, res) => {
 	try {
 		// get ip
-		const ip = requestIp.getClientIp(req);
+		const { ip } = res.locals;
+		console.log(ip);
 		// use geoip for location
 		const response = await got(`https://freegeoip.net/json/${ip}`);
 

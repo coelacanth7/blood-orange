@@ -1,12 +1,40 @@
 import React, { Component } from "react";
+import axios from "axios";
+import fingerprintjs from "fingerprintjs2";
+
+import Intro from "./Intro";
 
 class App extends Component {
-	// constructor(props) {
-	// 	super(props);
-	// }
+	constructor(props) {
+		super(props);
+		this.state = {
+			displayIntro: true,
+			Fprint: "",
+			isFetching: false,
+			error: null
+		};
+
+		this.onClickGoButton = this.onClickGoButton.bind(this);
+	}
+
+	onClickGoButton() {
+		setTimeout(() => {
+			new fingerprintjs().get((fprint, components) => {
+				console.log(fprint);
+
+				axios
+					.post("/user", { fprint })
+					.then(response =>
+						this.setState({ Fprint: response.data, displayIntro: false })
+					)
+					.catch(err => console.error(err));
+			});
+			this.setState({});
+		}, 100);
+	}
 
 	render() {
-		let Fprint = this.props.Fprint;
+		let Fprint = this.state.Fprint;
 		if (Object.keys(Fprint) === 0) return null;
 		const list = JSON.stringify(Fprint, 0, 2);
 
@@ -15,9 +43,7 @@ class App extends Component {
 				<header className="App-header">
 					<h1 id="list">hey</h1>
 				</header>
-				<p className="App-intro">
-					To get started, edit <code>src/App.js</code> and save to reload.
-				</p>
+				<Intro {...this.state} onClickGoButton={this.onClickGoButton} />
 				<pre>{list}</pre>
 			</div>
 		);

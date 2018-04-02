@@ -70,6 +70,9 @@ app.use((req, res, next) => {
 const usersRouter = require("./routers/usersRouter");
 app.use("/", usersRouter);
 
+const postsRouter = require("./routers/postsRouter");
+app.use("/", postsRouter);
+
 // listen
 var port = process.env.PORT || process.argv[2] || 3001;
 var host = "localhost";

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
-import { _request, getUserSuccess } from "../Actions";
+import { _request_user, getUserSuccess } from "../Actions";
 import Intro from "../components/Intro";
 
 class AppContainer extends Component {
@@ -18,17 +19,18 @@ class AppContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
 	return {
 		user: state.user,
-		isFetching: state.isFetching,
-		id: ownProps.match.params.id
+		isFetching: state.isFetching
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
 		requestUserData: () => {
-			dispatch(_request(`/user`, getUserSuccess));
+			dispatch(_request_user(`/user`, getUserSuccess));
 		}
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
+export default withRouter(
+	connect(mapStateToProps, mapDispatchToProps)(AppContainer)
+);

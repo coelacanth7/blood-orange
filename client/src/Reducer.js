@@ -1,7 +1,8 @@
 import {
 	GETTING_REQUEST,
 	GET_USER_SUCCESS,
-	GET_REQUEST_FAILURE
+	GET_REQUEST_FAILURE,
+	GET_POSTS_SUCCESS
 } from "./Actions";
 
 const initialState = {
@@ -22,6 +23,12 @@ export function Reducer(state = initialState, action) {
 			return {
 				...state,
 				user: action.data,
+				isFetching: false
+			};
+		case GET_POSTS_SUCCESS:
+			return {
+				...state,
+				num: action.data,
 				isFetching: false
 			};
 		case GET_REQUEST_FAILURE:

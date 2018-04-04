@@ -18,7 +18,6 @@ const Header = ({ username }) => {
 			<OrangeSvg />
 			{/* <div id="test" /> */}
 			<h1 id="logo">blood orange</h1>
-			<h4 id="username">{username} </h4>
 		</header>
 	);
 };

@@ -17,4 +17,9 @@ router.get("/posts", (req, res) => {
 	res.send("hey there");
 });
 
+router.post("/submit", (req, res) => {
+	console.log(req.body);
+	res.send(req.body);
+});
+
 module.exports = router;

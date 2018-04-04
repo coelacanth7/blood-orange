@@ -11,8 +11,15 @@ class PostsContainer extends Component {
 	}
 
 	render() {
-		const { user, isFetching, num } = this.props;
-		return <Posts user={user} num={num} isFetching={isFetching} />;
+		const { user, isFetching, num, requestPostsData } = this.props;
+		return (
+			<Posts
+				user={user}
+				num={num}
+				isFetching={isFetching}
+				requestPostsData={requestPostsData}
+			/>
+		);
 	}
 }
 

@@ -158,12 +158,6 @@ header {
 	display: inline-block;
 }
 
-#username {
-	display: inline-block;
-	position: absolute;
-	right: 20px;
-}
-
 #intro-text {
 	margin-top: 10px;
 	font-style: italic;
@@ -200,4 +194,44 @@ header {
 }
 #have-a-go:hover {
 	color: blue;
+}
+
+/* POSTS PAGE */
+#username {
+	display: inline-block;
+	position: relative;
+	top: 10px;
+	color: #bf203ae6;
+	padding: 10px;
+	/* position: absolute;
+	right: 20px; */
+}
+
+#input-box {
+	display: inline-block;
+	padding: 10px;
+	width: 70%;
+	border-radius: 8px;
+	border: 1px, solid, #bf203ae6;
+	min-height: 80px;
+}
+
+input[type="text"],
+textarea {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	outline: none;
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid #bf203ae6;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+	box-shadow: 0 0 5px #bf203ae6;
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid #bf203ae6;
 }

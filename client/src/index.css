@@ -153,9 +153,11 @@ header {
 	display: inline-block;
 }
 
+/* logo text */
 #logo {
 	font-size: 36px;
 	display: inline-block;
+	padding-left: 10px;
 }
 
 #intro-text {

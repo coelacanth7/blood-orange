@@ -8,6 +8,7 @@ import {
 
 const initialState = {
 	user: {},
+	location: [],
 	isFetching: false,
 	error: null
 };
@@ -24,6 +25,10 @@ export function Reducer(state = initialState, action) {
 			return {
 				...state,
 				user: action.data,
+				location: [
+					action.data.location.latitude,
+					action.data.location.longitude
+				],
 				isFetching: false
 			};
 		case GET_POSTS_SUCCESS:

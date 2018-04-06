@@ -18,12 +18,14 @@ const { IP_STACK_KEY } = process.env;
 router.post("/user", async (req, res) => {
 	try {
 		// get ip from middleware
-		const { ip } = res.locals;
+		// const { ip } = res.locals;
+		const ip = "72.200.79.101";
 
 		// use geoip for location
 		const response = await got(
 			`http://api.ipstack.com/${ip}?access_key=${IP_STACK_KEY}`
 		);
+		const location = JSON.parse(response.body);
 
 		// build a finger fprint hash
 		const fprint = {};
@@ -44,7 +46,7 @@ router.post("/user", async (req, res) => {
 			});
 		}
 
-		res.json({ fingerprinthash, location: response.body, user });
+		res.json({ fingerprinthash, location, user });
 	} catch (error) {
 		console.log(error);
 	}

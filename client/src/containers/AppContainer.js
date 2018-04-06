@@ -11,14 +11,15 @@ class AppContainer extends Component {
 	}
 
 	render() {
-		const { user, isFetching } = this.props;
-		return <Intro user={user} isFetching={isFetching} />;
+		const { user, isFetching, _location } = this.props;
+		return <Intro user={user} isFetching={isFetching} _location={_location} />;
 	}
 }
 
 const mapStateToProps = (state, ownProps) => {
 	return {
 		user: state.user,
+		_location: state.location,
 		isFetching: state.isFetching
 	};
 };

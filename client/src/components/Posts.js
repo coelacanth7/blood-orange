@@ -21,6 +21,7 @@ const Posts = ({ user, isFetching, submitPost }) => {
 		<div>
 			<Header />
 			<PostForm username={username} submitPost={submitPost} />
+			<h4>Posts near {user.location.region_name}</h4>
 			<pre>{list}</pre>
 		</div>
 	);

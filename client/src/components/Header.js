@@ -7,7 +7,7 @@ const Header = ({ username }) => {
 	let bodyTag = document.getElementById("body");
 	let style = window.getComputedStyle(bodyTag).backgroundColor;
 	console.log(style);
-	if (style == "rgba(191, 32, 58, 0.9)") {
+	if (style === "rgba(191, 32, 58, 0.9)") {
 		color = "#fff";
 	} else {
 		color = "#bf203ae6";

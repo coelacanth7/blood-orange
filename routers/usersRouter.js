@@ -13,35 +13,29 @@ var User = mongoose.model("User");
 const wikiUrl =
 	"https://en.wikipedia.org/w/api.php?action=query&list=random&rnlimit=1&format=json&origin=*&rnnamespace=0";
 
+const { IP_STACK_KEY } = process.env;
+
 router.post("/user", async (req, res) => {
 	try {
-		// get ip
+		// get ip from middleware
 		const { ip } = res.locals;
-		console.log(ip);
+
 		// use geoip for location
-		const response = await got(`https://freegeoip.net/json/${ip}`);
+		const response = await got(
+			`http://api.ipstack.com/${ip}?access_key=${IP_STACK_KEY}`
+		);
 
-		// cookies
-		console.log("cookies", req.signedCookies);
-		console.log("cookies", req.cookies);
-		console.log("cookies", req.Cookie);
-
-		// build a little better finger fprint
+		// build a finger fprint hash
 		const fprint = {};
-		fprint.useragent = req.headers["user-agent"];
 		fprint.ip = ip;
 		fprint.fprintjs = req.body.fprint;
-		fprint.hasLocation =
-			response.body.latitude === "" || !response.body.latitude ? false : true;
-		fprint.locationData = response.body;
-
-		// hash finger print
 		const fingerprinthash = MD5.hex(JSON.stringify(fprint));
 
 		// mongo logic
 		let user = await User.findOne({ fingerprinthash });
 		if (!user) {
 			const wikiResponse = await got(wikiUrl);
+			// need to clean usernames
 			const username = JSON.parse(wikiResponse.body).query.random[0].title;
 			user = new User({ fingerprinthash, username });
 			user.save((err, user) => {

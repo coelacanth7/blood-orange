@@ -4,7 +4,7 @@ import React from "react";
 import Header from "./Header";
 import PostForm from "./PostForm";
 
-const Posts = ({ user, isFetching, requestPostsData }) => {
+const Posts = ({ user, isFetching, submitPost }) => {
 	if (!Object.keys(user).length) {
 		console.log("hey");
 		return "go back";
@@ -20,7 +20,7 @@ const Posts = ({ user, isFetching, requestPostsData }) => {
 	return (
 		<div>
 			<Header />
-			<PostForm username={username} requestPostsData={requestPostsData} />
+			<PostForm username={username} submitPost={submitPost} />
 			<pre>{list}</pre>
 		</div>
 	);

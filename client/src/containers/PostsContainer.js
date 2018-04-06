@@ -2,30 +2,29 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
-import { _request_get, getPostsSuccess } from "../Actions";
+import {
+	_request_get,
+	_check_user_and_submit,
+	getPostsSuccess,
+	getSubmitSuccess
+} from "../Actions";
 import Posts from "../components/Posts";
 
 class PostsContainer extends Component {
 	componentDidMount() {
-		this.props.requestPostsData();
+		// this.props.requestPostsData();
 	}
 
 	render() {
-		const { user, isFetching, num, requestPostsData } = this.props;
+		const { user, isFetching, submitPost } = this.props;
 		return (
-			<Posts
-				user={user}
-				num={num}
-				isFetching={isFetching}
-				requestPostsData={requestPostsData}
-			/>
+			<Posts user={user} isFetching={isFetching} submitPost={submitPost} />
 		);
 	}
 }
 
 const mapStateToProps = state => {
 	return {
-		num: state.num,
 		user: state.user,
 		isFetching: state.isFetching
 	};
@@ -35,6 +34,9 @@ const mapDispatchToProps = dispatch => {
 	return {
 		requestPostsData: () => {
 			dispatch(_request_get(`/posts`, getPostsSuccess));
+		},
+		submitPost: text => {
+			dispatch(_check_user_and_submit(text, "/submit", getSubmitSuccess));
 		}
 	};
 };

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Modal from "react-modal";
-import axios from "axios";
 
 // const customStyles = {
 // 	content: {
@@ -40,15 +39,7 @@ class PostForm extends Component {
 
 	onClickPreventDefault(e) {
 		e.preventDefault();
-		axios
-			.post("/submit", { text: this.state.textVal })
-			.then(function(response) {
-				console.log(response);
-			})
-			.catch(function(error) {
-				console.log(error);
-			});
-		// this.props.requestPostsData();
+		this.props.submitPost(this.state.textVal);
 	}
 
 	handleChange(e) {

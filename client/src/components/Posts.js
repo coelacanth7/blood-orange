@@ -20,7 +20,6 @@ const Posts = ({ user, isFetching, requestPostsData }) => {
 	return (
 		<div>
 			<Header />
-			<hr />
 			<PostForm username={username} requestPostsData={requestPostsData} />
 			<pre>{list}</pre>
 		</div>

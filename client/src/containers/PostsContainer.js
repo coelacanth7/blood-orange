@@ -12,7 +12,13 @@ import Posts from "../components/Posts";
 
 class PostsContainer extends Component {
 	componentDidMount() {
-		// this.props.requestPostsData();
+		let latitude, longitude;
+		if (Object.keys(this.props.user).length) {
+			let { latitude, longitude } = this.props.user.location;
+			this.props.requestPostsData(`posts/${latitude}/${longitude}`);
+		}
+		if (latitude && longitude) {
+		}
 	}
 
 	render() {
@@ -32,8 +38,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		requestPostsData: () => {
-			dispatch(_request_get(`/posts`, getPostsSuccess));
+		requestPostsData: url => {
+			dispatch(_request_get(url, getPostsSuccess));
 		},
 		submitPost: text => {
 			dispatch(_check_user_and_submit(text, "/submit", getSubmitSuccess));

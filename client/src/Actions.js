@@ -73,7 +73,16 @@ export function _check_user_and_submit(text, url, successCallback) {
 			new fingerprintjs().get((fprint, components) => {
 				axios
 					.post("/user", { fprint })
-					.then(response => axios.post(url, { text, user: response.data }))
+					.then(response => {
+						return axios.post(url, {
+							text,
+							user: response.data.user,
+							location: [
+								response.data.location.latitude,
+								response.data.location.longitude
+							]
+						});
+					})
 					.then(response => {
 						console.log(response);
 						successCallback(response.data);

@@ -15,12 +15,10 @@ const Posts = ({ user, isFetching, submitPost }) => {
 
 	document.body.style.backgroundColor = "#fff";
 
-	let username = user.user.username;
-
 	return (
 		<div>
 			<Header />
-			<PostForm username={username} submitPost={submitPost} />
+			<PostForm username={user.user.username} submitPost={submitPost} />
 			<h4>Posts near {user.location.region_name}</h4>
 			<pre>{list}</pre>
 		</div>

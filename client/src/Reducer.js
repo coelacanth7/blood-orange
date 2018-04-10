@@ -9,6 +9,7 @@ import {
 const initialState = {
 	user: {},
 	location: [],
+	posts: [],
 	isFetching: false,
 	error: null
 };
@@ -34,6 +35,7 @@ export function Reducer(state = initialState, action) {
 		case GET_POSTS_SUCCESS:
 			return {
 				...state,
+				posts: [],
 				isFetching: false
 			};
 		case GET_SUBMIT_SUCCESS:

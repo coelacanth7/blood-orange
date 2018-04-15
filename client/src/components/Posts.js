@@ -1,13 +1,14 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import Header from "./Header";
 import PostForm from "./PostForm";
+import PostCard from "./PostCard";
 
-const Posts = ({ user, isFetching, submitPost }) => {
+const Posts = ({ user, isFetching, posts, submitPost }) => {
 	if (!Object.keys(user).length) {
-		console.log("hey");
-		return "go back";
+		console.log("no username");
+		return <Redirect to="/" />;
 	}
 
 	if (Object.keys(user) === 0) return null;
@@ -15,11 +16,17 @@ const Posts = ({ user, isFetching, submitPost }) => {
 
 	document.body.style.backgroundColor = "#fff";
 
+	let postList;
+	if (posts.length) {
+		postList = posts.map(post => <PostCard post={post} key={post._id} />);
+	}
+
 	return (
 		<div>
 			<Header />
 			<PostForm username={user.user.username} submitPost={submitPost} />
 			<h4>Posts near {user.location.region_name}</h4>
+			{postList}
 			<pre>{list}</pre>
 		</div>
 	);

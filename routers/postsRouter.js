@@ -1,11 +1,11 @@
 const express = require("express");
-
 const router = express.Router();
 
 const mongoose = require("mongoose");
 var MongooseModels = require("./../mongoose/models");
 var Post = mongoose.model("Post");
 
+// get posts by location
 router.get("/posts/:latt/:long", (req, res) => {
 	const { latt, long } = req.params;
 
@@ -17,11 +17,10 @@ router.get("/posts/:latt/:long", (req, res) => {
 			}
 		}
 	}).find((error, results) => {
-		console.log(error);
-		console.log(results);
+		if (error) console.error(erorr.stack);
+		console.log(JSON.stringify(results, 0, 2));
+		res.json({ results });
 	});
-
-	res.send("hey there");
 });
 
 // submit a new post
@@ -42,9 +41,9 @@ router.post("/submit", (req, res) => {
 		text: text
 	});
 
-	post.save((err, user) => {
-		if (err) console.log(err);
-		console.log(user);
+	post.save((err, message) => {
+		if (err) console.error(err.stack);
+		console.log(message);
 	});
 
 	res.json(req.body);

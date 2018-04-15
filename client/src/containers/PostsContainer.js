@@ -17,14 +17,17 @@ class PostsContainer extends Component {
 			let { latitude, longitude } = this.props.user.location;
 			this.props.requestPostsData(`posts/${latitude}/${longitude}`);
 		}
-		if (latitude && longitude) {
-		}
 	}
 
 	render() {
-		const { user, isFetching, submitPost } = this.props;
+		const { user, isFetching, submitPost, posts } = this.props;
 		return (
-			<Posts user={user} isFetching={isFetching} submitPost={submitPost} />
+			<Posts
+				user={user}
+				isFetching={isFetching}
+				posts={posts}
+				submitPost={submitPost}
+			/>
 		);
 	}
 }
@@ -32,6 +35,7 @@ class PostsContainer extends Component {
 const mapStateToProps = state => {
 	return {
 		user: state.user,
+		posts: state.posts,
 		isFetching: state.isFetching
 	};
 };

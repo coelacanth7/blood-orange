@@ -33,9 +33,10 @@ export function Reducer(state = initialState, action) {
 				isFetching: false
 			};
 		case GET_POSTS_SUCCESS:
+			console.log(action);
 			return {
 				...state,
-				posts: [],
+				posts: [...action.data.results],
 				isFetching: false
 			};
 		case GET_SUBMIT_SUCCESS:

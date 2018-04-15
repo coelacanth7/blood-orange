@@ -262,3 +262,42 @@ textarea:focus {
 	bottom: 0;
 	background-color: rebeccapurple;
 }
+
+/* POST BOX */
+.post-box {
+	position: relative;
+	width: 100%;
+	padding: 6px;
+	margin: 1px;
+	border: 1px solid #e5ecf1;
+}
+
+.post-time {
+	position: absolute;
+	right: 6px;
+	top: 6px;
+	color: gray;
+	font-size: 14px;
+}
+
+.post-username {
+	font-size: 18px;
+	color: #bf203ae6;
+}
+
+.post-text {
+	text-align: center;
+	font-size: 22px;
+	padding: 20px;
+}
+
+.post-comments {
+	position: absolute;
+	right: 6px;
+	bottom: 6px;
+	font-size: 14px;
+}
+
+.post-distance {
+	font-size: 14px;
+}

@@ -18,7 +18,9 @@ const Posts = ({ user, isFetching, posts, submitPost }) => {
 
 	let postList;
 	if (posts.length) {
-		postList = posts.map(post => <PostCard post={post} key={post._id} />);
+		postList = posts.map(post => (
+			<PostCard post={post} user={user} key={post._id} />
+		));
 	}
 
 	return (
@@ -27,7 +29,7 @@ const Posts = ({ user, isFetching, posts, submitPost }) => {
 			<PostForm username={user.user.username} submitPost={submitPost} />
 			<h4>Posts near {user.location.region_name}</h4>
 			{postList}
-			<pre>{list}</pre>
+			{/* <pre>{list}</pre> */}
 		</div>
 	);
 };

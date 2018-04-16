@@ -12,7 +12,6 @@ import Posts from "../components/Posts";
 
 class PostsContainer extends Component {
 	componentDidMount() {
-		let latitude, longitude;
 		if (Object.keys(this.props.user).length) {
 			let { latitude, longitude } = this.props.user.location;
 			this.props.requestPostsData(`posts/${latitude}/${longitude}`);

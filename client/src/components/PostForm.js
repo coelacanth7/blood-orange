@@ -63,7 +63,11 @@ class PostForm extends Component {
 		return (
 			<div>
 				<h4 id="username">{this.props.username} </h4>{" "}
-				<button onClick={this.openModal}>Open Modal</button>
+				<div className="btn-container">
+					<button className="open-modal-btn" onClick={this.openModal}>
+						Post
+					</button>
+				</div>
 				<Modal
 					isOpen={this.state.modalIsOpen}
 					onAfterOpen={this.afterOpenModal}
@@ -72,29 +76,38 @@ class PostForm extends Component {
 					className="Modal"
 					overlayClassName="Overlay"
 				>
-					<h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2>
-					<button onClick={this.closeModal}>close</button>
-					<div>I am a modal</div>
-					<form
-						method="post"
-						action="/submit"
-						onSubmit={this.formPreventDefault}
-					>
-						<textarea
-							rows="2"
-							id="input-box"
-							type="text"
-							name="message"
-							value={this.state.textVal}
-							onChange={this.handleChange}
-							autoComplete="off"
-						/>
-						<input
-							id="submit-button"
-							type="submit"
-							onClick={this.onClickPreventDefault}
-						/>
-					</form>
+					<div className="form-container">
+						<button className="closeModal" onClick={this.closeModal}>
+							&times;
+						</button>
+						<h2 ref={subtitle => (this.subtitle = subtitle)}>
+							{this.props.username}
+						</h2>
+						<form
+							method="post"
+							action="/submit"
+							onSubmit={this.formPreventDefault}
+						>
+							<textarea
+								className="post-text-box"
+								minLength="5"
+								maxLength="180"
+								rows="4"
+								id="input-box"
+								type="text"
+								name="message"
+								placeholder="Remember to be nice..."
+								value={this.state.textVal}
+								onChange={this.handleChange}
+								autoComplete="off"
+							/>
+							<input
+								id="submit-button"
+								type="submit"
+								onClick={this.onClickPreventDefault}
+							/>
+						</form>
+					</div>
 				</Modal>
 			</div>
 		);

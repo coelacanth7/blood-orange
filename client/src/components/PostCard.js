@@ -19,10 +19,14 @@ const PostCard = ({ post, user }) => {
 	return (
 		<div className="post-box">
 			<h3 className="post-username">{post.username}</h3>
-			<h4 className="post-time">{moment(post.createdAt).fromNow()}</h4>
+			<h4 className="post-time corner-text">
+				{moment(post.createdAt).fromNow()}
+			</h4>
 			<p className="post-text">{post.text}</p>
-			<h6 className="post-distance">{distance} meters away</h6>
-			<h6 className="post-comments">{post.comments.length} comments</h6>
+			<h6 className="post-distance corner-text">{distance} meters away</h6>
+			<h6 className="post-comments corner-text">
+				{post.comments.length} comments
+			</h6>
 		</div>
 	);
 };

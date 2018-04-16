@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import Header from "./Header";
 import PostForm from "./PostForm";
 import PostCard from "./PostCard";
+import LocationSvg from "./LocationSvg";
 
 const Posts = ({ user, isFetching, posts, submitPost }) => {
 	if (!Object.keys(user).length) {
@@ -11,8 +12,7 @@ const Posts = ({ user, isFetching, posts, submitPost }) => {
 		return <Redirect to="/" />;
 	}
 
-	if (Object.keys(user) === 0) return null;
-	const list = JSON.stringify(user, 0, 2);
+	// const list = JSON.stringify(user, 0, 2);
 
 	document.body.style.backgroundColor = "#fff";
 
@@ -27,7 +27,10 @@ const Posts = ({ user, isFetching, posts, submitPost }) => {
 		<div>
 			<Header />
 			<PostForm username={user.user.username} submitPost={submitPost} />
-			<h4>Posts near {user.location.region_name}</h4>
+			<h4 id="location-tag">
+				<LocationSvg />
+				{user.location.region_name}
+			</h4>
 			{postList}
 			{/* <pre>{list}</pre> */}
 		</div>
